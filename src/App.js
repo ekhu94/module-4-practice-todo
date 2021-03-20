@@ -54,6 +54,14 @@ class App extends React.Component {
     this.setState({ tasks: [...this.state.tasks, newTask] });
   }
 
+  onDeleteClick = text => {
+    const {tasks} = this.state;
+    const deleteText = tasks.find(t => t.text === text);
+    const updatedTasks = [...tasks]
+    updatedTasks.splice(tasks.indexOf(deleteText), 1);
+    this.setState({ tasks: updatedTasks });
+  }
+
   render() {
     const {selected, tasks, on} = this.state;
     return (
@@ -72,6 +80,7 @@ class App extends React.Component {
           tasks={tasks}
           categories={CATEGORIES}
           onNewTask={this.onNewTask}
+          onDeleteClick={this.onDeleteClick}
           selected={selected}
           on={on}
         />

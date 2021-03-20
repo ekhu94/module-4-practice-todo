@@ -7,7 +7,12 @@ class TasksList extends React.Component {
     renderTasks = tasks => {
         return tasks.map(t => {
             return (
-                <TaskItem key={t.text} task={t} />
+                <TaskItem
+                    key={t.text}
+                    task={t}
+                    on={this.props.on}
+                    onDeleteClick={this.props.onDeleteClick}
+                />
             );
         });
     };
