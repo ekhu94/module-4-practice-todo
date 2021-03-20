@@ -3,10 +3,12 @@ import './App.css';
 import { CATEGORIES } from './data'
 import CategoryFilter from './components/CategoryFilter';
 import TasksList from './components/TasksList';
+import StretchFeatureToggle from './components/StretchFeatureToggle';
 
 class App extends React.Component {
 
   state = {
+    on: false,
     selected: CATEGORIES[0],
     tasks: [
       {
@@ -44,10 +46,18 @@ class App extends React.Component {
     this.setState({ selected: filter });
   }
 
+  onToggleClick = prev => {
+    this.setState({ on: !prev })
+  }
+
   render() {
-    const {selected, tasks} = this.state;
+    const {selected, tasks, on} = this.state;
     return (
       <div className="App">
+        <StretchFeatureToggle
+          on={on}
+          onToggleClick={this.onToggleClick}
+        />
         <h2>My tasks</h2>
         <CategoryFilter
           selected={selected}
