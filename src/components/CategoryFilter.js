@@ -1,12 +1,14 @@
 import React from 'react';
 
 class CategoryFilter extends React.Component {
+
     render() {
-        const { categories, onCategoryClick } = this.props;
+        const { categories, selected, onCategoryClick } = this.props;
         const renderCategories = categories.map(c => {
             return (
                 <button
                     key={c}
+                    className={ selected === c ? 'selected' : '' }
                     onClick={e => onCategoryClick(e.target.innerText)}
                 >
                     {c}

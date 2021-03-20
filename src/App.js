@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { CATEGORIES } from './data'
 import CategoryFilter from './components/CategoryFilter';
+import TasksList from './components/TasksList';
 
 class App extends React.Component {
 
@@ -49,9 +50,11 @@ class App extends React.Component {
       <div className="App">
         <h2>My tasks</h2>
         <CategoryFilter
+          selected={selected}
           categories={CATEGORIES}
           onCategoryClick={this.onCategoryClick}
         />
+        <TasksList tasks={tasks} selected={selected} />
       </div>
     );
   }
