@@ -6,8 +6,8 @@ const StretchFeatureToggle = ({ on, onToggleClick }) => {
             className={`toggle ${on ? 'on' : 'off'}`}
             onClick={() => onToggleClick(on)}
         >
-            {on ? "Stretch features disabled" 
-                : "Stretch features enabled"}
+            {on ? "Stretch features enabled" 
+                : "Stretch features disabled"}
         </button>
     );
 };

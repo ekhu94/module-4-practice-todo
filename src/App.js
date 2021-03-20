@@ -50,6 +50,10 @@ class App extends React.Component {
     this.setState({ on: !prev })
   }
 
+  onNewTask = newTask => {
+    this.setState({ tasks: [...this.state.tasks, newTask] });
+  }
+
   render() {
     const {selected, tasks, on} = this.state;
     return (
@@ -64,7 +68,13 @@ class App extends React.Component {
           categories={CATEGORIES}
           onCategoryClick={this.onCategoryClick}
         />
-        <TasksList tasks={tasks} selected={selected} />
+        <TasksList
+          tasks={tasks}
+          categories={CATEGORIES}
+          onNewTask={this.onNewTask}
+          selected={selected}
+          on={on}
+        />
       </div>
     );
   }

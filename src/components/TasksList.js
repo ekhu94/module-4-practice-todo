@@ -1,5 +1,6 @@
 import React from 'react';
 import TaskItem from './TaskItem';
+import TaskForm from './TaskForm';
 
 class TasksList extends React.Component {
 
@@ -12,7 +13,7 @@ class TasksList extends React.Component {
     };
 
     render() {
-        const {tasks, selected} = this.props;
+        const {tasks, categories, selected, on, onNewTask} = this.props;
         let showTasks = [];
         if (selected !== "All") {
             const filteredTasks = tasks.filter(t => {
@@ -26,6 +27,11 @@ class TasksList extends React.Component {
         return (
             <div className="tasks">
                 <h5>Tasks</h5>
+                {on ? <TaskForm
+                        categories={categories}
+                        onNewTask={onNewTask}
+                    />
+                : null}
                 {showTasks}
             </div>
         );
